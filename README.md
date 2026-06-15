@@ -77,14 +77,14 @@
 ```
 
 - **多路并行检索**：三种查询扩展策略同时检索，提升召回覆盖率
-- **迭代精炼**：支持多轮检索-提取-精炼循环（可配置迭代次数）
+- **迭代精炼**：支持多轮检索-提取-精炼循环（可配置迭代次数），提高检索文档相关性
 - **选择题智能识别**：自动识别 A/B/C/D 选项格式，输出规范化答案
 - **Fallback 机制**：当检索结果不相关时，自动回退到模型自身知识
 
 ### 2. 医学题库系统
 
 - 支持 **MMLU**（大规模多任务语言理解）医学子集
-- 支持 **MedQA** 和 **MedMCQA** 题库
+- 支持 **MedQA** 和 **MedMCQA** 等多种题库
 - AI 智能解析每一道题，给出推理过程
 - 题库中文翻译工具（`translate_quiz.py`），批量翻译英文题目
 - 内置 MMLU 评估脚本（`12.3evaluate.py`），计算答题准确率
@@ -174,8 +174,8 @@ KnowledgeBase-RAG-LLM-System/
 ├── 🧠 enhanced_rag.py              # 增强 RAG 引擎（核心：检索 + CoT 推理 + 答案生成）
 ├── 📊 多样化及事实知识提取deepseek.py # 医学知识检索系统（FAISS + MedCPT 嵌入）
 ├── 📝 template.py                  # Prompt 模板库（Jinja2/Liquid 模板引擎）
-├── 🔗 query_to_cot.py              # Query → Chain-of-Thought 推理链（第一步）
-├── ✅ cot_to_answer.py             # CoT → 最终答案（第二步）
+├── 🔗 query_to_cot.py              # Query → Chain-of-Thought 推理链
+├── ✅ cot_to_answer.py             # CoT → 最终答案
 ├── 📦 rag.py                       # LangChain RAG 链（ChromaDB + 通义千问 通道）
 ├── 🗄️ vector_stores.py            # ChromaDB 向量库封装
 ├── 💾 file_history_store.py        # 对话历史文件存储
@@ -495,7 +495,7 @@ curl -X POST http://localhost:8000/api/chat \
 | 模型 | 用途 | API |
 |------|------|-----|
 | DeepSeek-Chat | CoT 推理、答案生成、查询扩展、事实提取 | DeepSeek API |
-| Qwen3-Max | 对话生成（ChromaDB 通道） | DashScope API |
+
 
 ### 开发框架
 
