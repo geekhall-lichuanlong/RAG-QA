@@ -1,0 +1,14 @@
+{
+  "medqa": {
+     "10174": {
+            "question": "A 45-year-old male with a 15-year history of diabetes mellitus presents to his primary care provider for a routine checkup. His doctor is concerned about his renal function and would like to order a test to detect renal impairment. Which of the following is the most sensitive test for detecting renal impairment in diabetic patients?",
+            "options": {
+                "A": "Cystatin C levels",
+                "B": "Urine microalbumin to creatinine ratio",
+                "C": "Hemoglobin A1C",
+                "D": "Urine protein dipstick"
+            },
+            "answer": "B"
+        }
+  }
+}
