@@ -1,0 +1,77 @@
+<!-- 答题练习页面 -->
+<view class="page">
+  <!-- 进度条 -->
+  <view class="progress-bar">
+    <view class="progress-inner" style="width: {{progress}}%"></view>
+  </view>
+  <view class="progress-text">第 {{currentIndex + 1}} 题 / 共 {{total}} 题 ({{progress}}%)</view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{questionLoading}}" class="spinner">
+    <text>加载题目中...</text>
+  </view>
+
+  <!-- 题目卡片 -->
+  <view wx:else class="card question-card">
+    <view class="q-number">📖 题目 {{currentIndex + 1}}</view>
+    <text class="q-text">{{questionText}}</text>
+
+    <!-- 选项列表 -->
+    <radio-group class="options-group" bindchange="onOptionChange">
+      <view wx:for="{{optionKeys}}" wx:key="key"
+            class="option-item {{submitted && selectedOption === item ? (isCorrect ? 'correct' : 'wrong') : ''}} {{submitted && item === correctAnswer ? 'correct' : ''}}">
+        <label class="option-label">
+          <radio value="{{item}}" disabled="{{submitted}}" />
+          <text class="option-letter">{{item}}.</text>
+          <text class="option-text">{{options[item]}}</text>
+        </label>
+      </view>
+    </radio-group>
+
+    <!-- 提交按钮 -->
+    <button wx:if="{{!submitted}}"
+            class="btn-primary submit-btn"
+            bindtap="onSubmit"
+            disabled="{{!selectedOption}}">
+      🚀 提交答案
+    </button>
+
+    <!-- 结果反馈 -->
+    <view wx:if="{{submitted}}" class="result-area">
+      <view wx:if="{{isCorrect}}" class="result-success">
+        <text class="result-icon">🎉</text>
+        <text>回答正确！</text>
+      </view>
+      <view wx:else class="result-fail">
+        <text class="result-icon">❌</text>
+        <text>正确答案：{{correctAnswer}}. {{options[correctAnswer]}}</text>
+      </view>
+    </view>
+
+    <!-- AI 解析 -->
+    <view wx:if="{{submitted}}">
+      <button wx:if="{{!explanation && !explainLoading}}"
+              class="btn-explain"
+              bindtap="onExplain">
+        🧠 AI 智能解析
+      </button>
+      <view wx:if="{{explainLoading}}" class="spinner">
+        <text>AI 正在生成解析...</text>
+      </view>
+      <view wx:if="{{explanation}}" class="explanation-box">
+        <view class="exp-header">🧠 AI 智能解析</view>
+        <text class="exp-body">{{explanation}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 导航按钮 -->
+  <view class="nav-bar">
+    <button class="nav-btn" bindtap="onPrev" disabled="{{currentIndex === 0}}">
+      ◀ 上一题
+    </button>
+    <button class="nav-btn" bindtap="onNext" disabled="{{currentIndex >= total - 1}}">
+      下一题 ▶
+    </button>
+  </view>
+</view>

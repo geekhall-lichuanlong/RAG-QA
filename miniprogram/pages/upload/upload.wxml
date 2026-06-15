@@ -1,0 +1,85 @@
+<!-- 知识上传页面 -->
+<view class="page">
+  <!-- 标题栏 -->
+  <view class="header">
+    <text class="header-icon">📁</text>
+    <view>
+      <text class="header-title">知识库更新</text>
+      <text class="header-desc">上传医学文档，扩展知识库</text>
+    </view>
+  </view>
+
+  <!-- Tab 切换 -->
+  <view class="tabs">
+    <view class="tab {{activeTab === 'file' ? 'tab-active' : ''}}"
+          bindtap="switchTab" data-tab="file">
+      文件上传
+    </view>
+    <view class="tab {{activeTab === 'text' ? 'tab-active' : ''}}"
+          bindtap="switchTab" data-tab="text">
+      文本录入
+    </view>
+  </view>
+
+  <!-- 文件上传模式 -->
+  <view wx:if="{{activeTab === 'file'}}" class="card upload-card">
+    <view class="upload-area" bindtap="onChooseFile">
+      <text class="upload-icon">📄</text>
+      <text wx:if="{{!selectedFile}}" class="upload-hint">点击选择聊天文件</text>
+      <view wx:else class="file-info">
+        <text class="file-name">{{selectedFile.name}}</text>
+        <text class="file-size">{{selectedFile.size}} KB</text>
+      </view>
+    </view>
+
+    <button wx:if="{{selectedFile}}"
+            class="btn-primary"
+            bindtap="onUploadFile"
+            disabled="{{uploading}}">
+      {{uploading ? '上传中...' : '上传到知识库'}}
+    </button>
+  </view>
+
+  <!-- 文本录入模式 -->
+  <view wx:if="{{activeTab === 'text'}}" class="card upload-card">
+    <view class="field">
+      <text class="field-label">文档标题</text>
+      <input class="field-input"
+             placeholder="输入文档标题（可选）"
+             value="{{textTitle}}"
+             bindinput="onTextTitle" />
+    </view>
+    <view class="field">
+      <text class="field-label">文档内容</text>
+      <textarea class="field-textarea"
+                placeholder="在此粘贴或输入文本内容..."
+                value="{{textContent}}"
+                bindinput="onTextContent"
+                auto-height
+                maxlength="50000" />
+    </view>
+    <text class="char-count">{{textContent.length}} / 50000</text>
+
+    <button class="btn-primary"
+            bindtap="onUploadText"
+            disabled="{{uploading || !textContent}}">
+      {{uploading ? '上传中...' : '提交到知识库'}}
+    </button>
+  </view>
+
+  <!-- 上传结果 -->
+  <view wx:if="{{uploadResult}}" class="card result-card {{uploadResult.status === 'ok' ? 'success' : 'fail'}}">
+    <text class="result-title">{{uploadResult.status === 'ok' ? '✅ 上传成功' : '❌ 上传失败'}}</text>
+    <text wx:if="{{uploadResult.filename}}" class="result-detail">文件名：{{uploadResult.filename}}</text>
+    <text wx:if="{{uploadResult.size}}" class="result-detail">大小：{{uploadResult.size}} 字符</text>
+    <text wx:if="{{uploadResult.error}}" class="result-detail error">{{uploadResult.error}}</text>
+  </view>
+
+  <!-- 提示信息 -->
+  <view class="hint-box">
+    <text class="hint-title">💡 提示</text>
+    <text class="hint-text">• 支持 TXT PDF Markdown json jsonl格式文本文件</text>
+    <text class="hint-text">• 上传后需在服务器端运行数据处理脚本构建索引</text>
+    <text class="hint-text">• 文本录入适合快速添加小段医学知识</text>
+  </view>
+</view>

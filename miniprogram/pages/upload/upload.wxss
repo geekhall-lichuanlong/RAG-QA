@@ -1,0 +1,186 @@
+/* 知识上传页面 */
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 50%);
+}
+
+/* 标题 */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.header-icon { font-size: 52rpx; margin-right: 16rpx; }
+
+.header-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.header-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #64748b;
+  margin-top: 4rpx;
+}
+
+/* Tab */
+.tabs {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 14rpx;
+  padding: 6rpx;
+  margin-bottom: 24rpx;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx;
+  font-size: 28rpx;
+  color: #64748b;
+  border-radius: 10rpx;
+  transition: 0.2s;
+}
+
+.tab-active {
+  background: #ffffff;
+  color: #2563eb;
+  font-weight: 600;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
+}
+
+/* 上传卡片 */
+.upload-card {
+  margin: 0 0 24rpx;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 280rpx;
+  margin-bottom: 24rpx;
+  border: 2rpx dashed #cbd5e1;
+  border-radius: 16rpx;
+  background: #f8fafc;
+}
+
+.upload-icon { font-size: 72rpx; margin-bottom: 16rpx; }
+
+.upload-hint { color: #94a3b8; font-size: 26rpx; }
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.file-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8rpx;
+}
+
+.file-size { color: #64748b; font-size: 24rpx; }
+
+/* 文本录入 */
+.field {
+  margin-bottom: 24rpx;
+}
+
+.field-label {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 12rpx;
+}
+
+.field-input {
+  height: 72rpx;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.field-textarea {
+  min-height: 300rpx;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 22rpx;
+  color: #94a3b8;
+  margin-bottom: 24rpx;
+  display: block;
+}
+
+/* 结果 */
+.result-card {
+  margin: 0 0 24rpx;
+}
+
+.result-card.success {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.result-card.fail {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.result-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+
+.result-detail {
+  display: block;
+  font-size: 24rpx;
+  color: #475569;
+  margin-bottom: 6rpx;
+}
+
+.result-detail.error { color: #dc2626; }
+
+/* 提示 */
+.hint-box {
+  margin-top: 32rpx;
+  padding: 24rpx;
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: 14rpx;
+}
+
+.hint-title {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #a16207;
+  margin-bottom: 12rpx;
+}
+
+.hint-text {
+  display: block;
+  font-size: 24rpx;
+  color: #854d0e;
+  line-height: 1.8;
+}

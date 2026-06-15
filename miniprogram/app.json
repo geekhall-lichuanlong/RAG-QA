@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/chat/chat",
+    "pages/quiz/quiz",
+    "pages/upload/upload"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#2563eb",
+    "navigationBarTitleText": "医学知识助手",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f8fbff"
+  },
+  "tabBar": {
+    "color": "#94a3b8",
+    "selectedColor": "#2563eb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "智能问答"
+      },
+      {
+        "pagePath": "pages/quiz/quiz",
+        "text": "答题练习"
+      },
+      {
+        "pagePath": "pages/upload/upload",
+        "text": "知识上传"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
